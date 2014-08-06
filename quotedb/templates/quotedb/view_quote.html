@@ -1,0 +1,46 @@
+{% extends "quotedb/base.html" %}
+{% block title %} QDB - View Quote {% endblock %}
+
+{% block page_title %}
+	Quote # {{ quote.id }}
+{% endblock %}
+
+{% block content %}
+	<div class="message-top">
+	<b>Author:</b> 
+	<a href='{% url 'quotedb:user' quote.author.id %}'>{{ quote.author.name }}</a> | <b>Rating:</b> {{ quote.rating }} | <a href='v/1?next={{ next }}'>[+]</a> <a href='v/0?next={{ next }}'>[-]</a></div>
+	<br>
+	<div class="message-body">
+		{{ quote.text }}
+	</div>
+
+	<br><br>
+	<table class="grid">
+		<tbody>
+			<tr>
+				<th>Comments</th>
+			</tr>
+		</tbody>
+	</table>
+	{% if comment_list %}
+		
+		{% for comment in comment_list %}
+			<div class="message-top">
+				<b>Posted by:</b> <a href='{% url 'quotedb:user' comment.author.id %}'>{{ comment.author.name }}</a>
+			</div>
+			<div class="message-body">
+				{{ comment.text }}
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>No comments... yet :)</p>
+	{% endif %}
+
+	<br>
+	<h3>Add A Comment</h3>
+	<form action="add_comment/" method="post">
+	{% csrf_token %}
+		<textarea style="width:646px" rows="20" name="comment" id="comment"></textarea><br>
+		<input type="submit" value="Post Comment">
+	</form>
+{% endblock %}

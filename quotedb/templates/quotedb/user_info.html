@@ -1,0 +1,67 @@
+{% extends "quotedb/base.html" %}
+{% block title %} QDB - User Profile - {{ user_profile.user.get_username }} {% endblock %}
+
+{% block page_title %} User Information {% endblock %}
+
+{% block content %}
+
+<table class="grid">
+	<tbody>
+		<tr>
+			<th colspan="2">Current Information for {{ user_profile.user.get_username }}</th>
+		</tr>
+		<tr>
+			<td>User Name</td>
+			<td>{{ user_profile.user.get_username }}</td>
+		</tr>
+		{% if user_profile.is_banned %}
+			<tr>
+				<td>Status</td>
+				<td><strong>Banned</strong></td>
+			</tr>
+		{% endif %}
+		{% if user_profile.is_moderator %}
+			<tr>
+				<td>Status</td>
+				<td><strong>Moderator</strong></td>
+			</tr>
+		{% endif %}
+		{% if user_profile.is_admin %}
+			<tr>
+				<td>Status</td>
+				<td><strong>Administrator</strong></td>
+			</tr>
+		{% endif %}
+		<tr>
+			<td>Email</td>
+			<td>{{ user_profile.user.email }}</td>
+		</tr>
+		<tr>
+			<td>Account Created</td>
+			<td>{{ user_profile.user.date_joined }}</td>
+		</tr>
+		<tr>
+			<td>Elephants</td>
+			<td>{{ user_profile.elephants }}</td>
+		</tr>
+	</tbody>
+</table>
+
+{% if user.is_moderator %}
+	<table class="grid">
+		<tbody>
+			<tr>
+				<th colspan="2">Moderator Tools</th>
+				<td>
+					<ul>
+						<li>View All Submitted Quotes</li>
+						<li>View All Submitted Comments</li>
+						<li>Suspend User</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{% endif %}
+
+{% endblock %}

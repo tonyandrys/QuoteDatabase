@@ -1,0 +1,23 @@
+{% extends "quotedb/base.html" %}
+{% block title %} QDB - Registration Successful {% endblock %}
+
+{% block content %}
+	<p><b>Registration Successful!</b></p>
+	<br>
+	<p> You are now logged in with the following profile credentials:</p>
+	<ul>
+		<li>Username: {{user_profile.name}}
+		<li>Email: {{user_profile.email}}
+		<li>Created: {{user_profile.user_created}}
+		<li>Is Banned: {{user_profile.is_banned}}
+		<li>Is Moderator: {{user_profile.is_moderator}}
+		<li>Is Administrator: {{user_profile.is_admin}}
+		<li>Elephants: {{user_profile.elephants}}
+	</ul>
+	<br>
+	<p>This links to the following User credentials:</p>
+	<ul>
+		<li>User name: {{user.username}}</li>
+		<li>Anonymous? {{user.is_anonymous}}</li>
+	</ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "quotedb/base.html" %}
+{% block title %} QDB - Browse Quotes {% endblock %}
+{% block page_title %} Browse All Quotes {% endblock %}
+
+{% block content %}
+
+{% for quote in quote_list %}
+<table class="quote-table" width="100%">
+	<tr>
+	<th class="quote-table">
+		<!-- LEFT -->
+		<div style="float:left;width:91%;"><b>Quote:</b> <a href='{% url 'quotedb:quote' quote.id %}'>#{{ quote.id }}</a> | <b>Author:</b> <a href='{% url 'quotedb:user' quote.author.id %}'>{{ quote.author.name }}</a></div>
+
+		<!-- RIGHT -->
+		<div style="float:right;width:9%;"><b>Rating:</b> {{ quote.rating }} <a href='{% url 'quotedb:process_vote' quote.id 1 %}?next={{ next }}'>[+]</a> <a href='{% url 'quotedb:process_vote' quote.id 0 %}?next={{ next }}'>[-]</a></div>
+	</th>
+	</tr>
+	<td class="quote-table" colspan="2">
+		{{ quote.text }}
+	</td>
+</table>
+{% endfor %}
+
+{% endblock %}

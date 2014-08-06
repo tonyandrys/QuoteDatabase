@@ -1,0 +1,52 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "quotedb/llblue.css" %}"/>
+    <title>{% block title %}QDB!{% endblock %}</title>
+</head>
+
+<body>
+<div class="wrapper">	
+	<div id="menubar">
+        <div class="menubar">
+		{% block topbar %}
+            <a href='{% url 'quotedb:status' %}'>Home</a> | <a href='{% url 'quotedb:browse' %}'>Browse Quotes</a> | <a href='{% url 'quotedb:random' %}'>Random Quote</a> | <a href='{% url 'quotedb:shop'  %}'>Elephant Shop</a>
+        {% endblock %}
+		</div>
+    </div>
+
+	<div id="adminbar">
+		<div class="message">
+			{% block adminbar %}
+				<center>Mod Panel - Accounts (#) | Quotes (#) | Comments (#) |</center>
+			{% endblock %}
+		</div>
+	<h1>
+	{% block page_title %}
+		QDB!
+	{% endblock %}
+	</h1>
+	
+	<div id="userbar">
+		<div class=userbar>
+		{% if user.is_anonymous %}
+			<a href='{% url 'quotedb:login_page' %}'>Login</a>
+		{% else %}
+			{% block userbar %}
+			<a href='{% url 'quotedb:user' user.id  %}'>{{ user.username }}</a> | <a href='{% url 'quotedb:new_quote_submit' %}'>Add A Quote</a> | Settings | <a href='{% url 'quotedb:logout' %}'>Logout</a>
+			{% endblock %}
+		{% endif %}	
+		</div>
+	</div>
+
+    <div id="content">
+        {% block content %}
+		{% endblock %}
+    </div>
+	<div class="push"></div>
+	</div>
+	<footer>powered by quotedb - © Tony Andrys 2014 | <a href='source'>source (github)</a> | <a href='about'>about</a> | <a href='license'>license</a></footer>
+</body>
+</html>

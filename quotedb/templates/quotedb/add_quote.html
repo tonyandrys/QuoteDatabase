@@ -1,0 +1,20 @@
+{% extends "quotedb/base.html" %}
+{% block title %} QDB - Add Quote {% endblock %}
+{% block page_title %} Add A Quote! {% endblock %} 
+
+{% block content %}
+	
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<p>Submit your quote using the form below. The rules are simple:</p>
+	<ul>
+		<li>No quote can be over 5000 characters.</li>
+		<li>Don't submit things that don't belong on this website.</li>
+	</ul>
+	<p>Otherwise, feed me your lore plx</p>
+	<form action="{% url 'quotedb:add_quote' %}" method="post">
+	{% csrf_token %}
+	<textarea cols="100" rows="20" name="quote_text"></textarea><br>
+	<input type="submit" value="Submit">
+	</form>	   
+
+{% endblock %}

@@ -1,0 +1,44 @@
+h1 {
+	text-align: center;
+	width: 100%;
+}
+
+.quote-header {
+	background-color: #CDD9E4
+}
+
+.quote-body {
+	}
+
+.topbar {
+    font-family: arial, helvetica, sans-serif;
+    text-align:center;
+    font-size: 20px;
+    background-color: #86A9D1;
+    color: #000000
+    text-align: center;
+    width: 100%;
+}
+
+.userbar {
+    font-family: arial, helvetica, sans-serif;
+    text-align:center;
+    font-size: 18px;
+    background-color: #6CB0E0;
+    color: #000000
+    text-align: center;
+    width: 100%;
+}
+
+th.quote-table {
+	padding: 2px;
+	background-color: #CDD9E4;
+	width: 100%;
+	text-align: left;
+}
+
+td.quote-table {
+	padding: 2px;
+	background-color: #F2F2F2;
+	width: 100%;
+}

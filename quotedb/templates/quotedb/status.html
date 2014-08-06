@@ -1,0 +1,10 @@
+{% extends "quotedb/base.html" %}
+{% block title %} QDB - Site Status {% endblock %}
+{% block page_title %} QDB! {% endblock %}
+
+{% block content %}
+<p><b>QDB Status</b></p>
+<ul>Quote Count: {{ counts.quote }}</ul> 
+<ul>User Count: {{ counts.user }}</ul>
+<ul>Comment Count: {{ counts.comment }}</ul>
+{% endblock %}
